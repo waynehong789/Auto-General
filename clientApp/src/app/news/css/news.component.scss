@@ -1,0 +1,33 @@
+.news-search{
+    margin-top: 50px;
+}
+
+table {
+    width: 80%;
+    table-layout: fixed;
+  }
+  
+  
+th.mat-header-cell {
+    font-weight: bold;
+    text-align: center;
+    font-size: large;
+    color: #FDFDFD;
+  }
+
+tr.mat-header-row {
+    background-color: rgb(13, 52, 228);
+  }
+
+.searchToolbar{
+  width:60vw;
+}
+
+.searchToolbarInput{
+  background: white;
+  color: #000;
+}
+
+.toolbar-spacer{
+  flex: 1 1 auto;
+}

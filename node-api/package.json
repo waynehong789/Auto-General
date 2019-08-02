@@ -1,0 +1,33 @@
+{
+  "name": "node-api",
+  "version": "1.0.0",
+  "description": "node api for Hacker News Search",
+  "main": "main.js",
+  "scripts": {
+    "start": "./node_modules/.bin/tsc && nodemon --inspect main.js",
+    "test": "mocha --require ts-node/register --require source-map-support/register --full-trace --bail --timeout 5000"
+  },
+  "author": "Wayne Hong",
+  "license": "ISC",
+  "dependencies": {
+    "@types/bunyan": "^1.8.6",
+    "bunyan": "^1.8.12",
+    "express": "^4.16.4",
+    "http": "0.0.0",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.4"
+  },
+  "devDependencies": {
+    "@types/chai-http": "^3.0.5",
+    "@types/express": "^4.16.1",
+    "@types/mocha": "^5.2.5",
+    "@types/node": "^11.13.4",
+    "@types/request": "^2.48.1",
+    "@types/request-promise": "^4.1.42",
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.0",
+    "mocha": "^5.2.0",
+    "ts-node": "^8.1.0",
+    "typescript": "~3.4.5"
+  }
+}
