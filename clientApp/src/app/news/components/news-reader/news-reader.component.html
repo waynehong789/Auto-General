@@ -1,15 +1,22 @@
+<div class="news_reader" fxLayout="column" fxLayoutGap="20px" fxLayoutAlign="space-around center">
 
-<div fxLayout="column" fxLayoutGap="20px" fxLayoutAlign="space-around center" style="margin-bottom: 20px;">
-    <iframe style="width:60vw; height:60vh; background-color: white" [src]="fetchedHtml"></iframe>
-    <div style="width:60vw; background-color: white" fxLayout="row" fxLayoutAlign="space-around center">
+    <iframe class="news_frame" [src]="fetchedHtml"></iframe>
+
+    <div class="news_bar" fxLayout="row" fxLayoutAlign="space-around center">
+
         <button mat-raised-button class="btn" (click)="backURL()" [disabled]="index===0" matTooltip="Previous News">
             Previous
         </button>
-        <span style="color:rgb(13, 52, 228); font-size: 1.5em;">
+
+        <span class="page_index">
             Page {{index + 1}} of {{totalNews}}
         </span>
-        <button mat-raised-button class="btn" (click)="nextURL()" [disabled]="index === totalNews-1" matTooltip="Next News">
+
+        <button mat-raised-button class="btn" (click)="nextURL()" [disabled]="index === totalNews-1"
+            matTooltip="Next News">
             Next
         </button>
+
     </div>
+
 </div>

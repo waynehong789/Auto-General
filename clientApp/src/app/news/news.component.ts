@@ -19,12 +19,6 @@ export class NewsComponent extends NewsSuper implements OnInit {
   displayURL: any;
   index: number = 0;
 
-  //displayedColumns: string[] = ['ID', 'Title', 'Author', 'OpenNews'];
-
-  //public dataSource = new MatTableDataSource<News>(this.newsList);
-
-  //@ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
-
 
   constructor(newsService: NewsService, injector: Injector, private sanitizer: DomSanitizer) {
     super(newsService, injector)
@@ -36,7 +30,6 @@ export class NewsComponent extends NewsSuper implements OnInit {
 
   async searchNews() {
     if (this.searchQuery) {
-      //console.log(this.searchQuery);
       try {
         this.loading = true;
         this.index = 0
@@ -44,9 +37,6 @@ export class NewsComponent extends NewsSuper implements OnInit {
         if (result && result.length > 0) {
           this.loading = false;
           this.newsList = result;
-          //this.dataSource = new MatTableDataSource<News>(this.newsList);
-          //setTimeout(() => this.dataSource.paginator = this.paginator);
-          //this.displayURL = this.sanitizer.bypassSecurityTrustResourceUrl(this.newsList[0].url);
           this.displayURL = this.newsList[this.index].url;
         }
       } catch (err) {
@@ -54,16 +44,6 @@ export class NewsComponent extends NewsSuper implements OnInit {
       }
     }
   }
-
-
-  /* openNews(row: News) {
-    try {
-     let win = window.open(row.url, '_blank');
-     win.focus();
-    } catch (err) {
-      console.log(err);
-    }
-  } */
 
   changeURL(changedIndex: number){
     this.index += changedIndex;

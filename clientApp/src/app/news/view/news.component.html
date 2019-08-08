@@ -1,10 +1,12 @@
 <div class="news-search">
+  
   <div fxLayout="column" fxLayoutAlign="space-around center">
+    
     <h1 class="page-header">
       {{ title }}
     </h1>
+    
     <img width="200px" alt="Logo" src="../assets/Wayne.png">
-    <!-- <h4> You can search Hacker News from here.</h4> -->
   
     <mat-form-field class="searchToolbar">
       <mat-toolbar color="primary">
@@ -29,4 +31,5 @@
   <div *ngIf="loading" class="loading">
     <mat-spinner></mat-spinner>
   </div>
+
 </div>
