@@ -1,15 +1,15 @@
 
 <div fxLayout="column" fxLayoutGap="20px" fxLayoutAlign="space-around center" style="margin-bottom: 20px;">
     <iframe style="width:60vw; height:60vh; background-color: white" [src]="fetchedHtml"></iframe>
-    <div style="width:60vw; background-color: white" fxLayout="row" fxLayoutAlign="space-between center">
-        <button mat-icon-button (click)="backURL()" [disabled]="index===0">
-            <mat-icon class="material-icons" style="color: rgb(13, 52, 228); font-size: 50px;">arrow_back</mat-icon>
+    <div style="width:60vw; background-color: white" fxLayout="row" fxLayoutAlign="space-around center">
+        <button mat-raised-button class="btn" (click)="backURL()" [disabled]="index===0" matTooltip="Previous News">
+            Previous
         </button>
-        <span style="color:rgb(13, 52, 228); font-size: 2em;">
-            {{index + 1}} / {{totalNews}}
+        <span style="color:rgb(13, 52, 228); font-size: 1.5em;">
+            Page {{index + 1}} of {{totalNews}}
         </span>
-        <button mat-icon-button (click)="nextURL()" [disabled]="index === totalNews-1" style="margin-right: 20px">
-            <mat-icon class="material-icons" style="color: rgb(13, 52, 228); font-size: 50px;">arrow_forward</mat-icon>
+        <button mat-raised-button class="btn" (click)="nextURL()" [disabled]="index === totalNews-1" matTooltip="Next News">
+            Next
         </button>
     </div>
 </div>

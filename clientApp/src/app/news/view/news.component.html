@@ -9,7 +9,7 @@
     <mat-form-field class="searchToolbar">
       <mat-toolbar color="primary">
         <input matInput class="searchToolbarInput" type="text" [(ngModel)]="searchQuery" (keyup.enter)="searchNews()">
-        <button mat-button *ngIf="searchQuery" matSuffix mat-icon-button aria-label="Clear" (click)="searchQuery=''">
+        <button mat-button *ngIf="searchQuery" matSuffix mat-icon-button aria-label="Clear" (click)="searchQuery=''; newsList=[]">
           <mat-icon>close</mat-icon>
         </button>
         <button mat-button [disabled]="!searchQuery" matSuffix mat-icon-button aria-label="Search" (click)="searchNews()">
