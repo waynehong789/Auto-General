@@ -18,6 +18,7 @@ export class NewsComponent extends NewsSuper implements OnInit {
   searchQuery: string = "";
   displayURL: any;
   index: number = 0;
+  newsTitle: string = "";
 
 
   constructor(newsService: NewsService, injector: Injector, private sanitizer: DomSanitizer) {
@@ -38,6 +39,7 @@ export class NewsComponent extends NewsSuper implements OnInit {
           this.loading = false;
           this.newsList = result;
           this.displayURL = this.newsList[this.index].url;
+          this.newsTitle = this.newsList[this.index].title;
         }
       } catch (err) {
         console.log(err);
@@ -48,6 +50,7 @@ export class NewsComponent extends NewsSuper implements OnInit {
   changeURL(changedIndex: number){
     this.index += changedIndex;
     this.displayURL = this.newsList[this.index].url;
+    this.newsTitle = this.newsList[this.index].title;
   }
 
 }

@@ -5,8 +5,9 @@
     <h1 class="page-header">
       {{ title }}
     </h1>
-    
-    <img width="200px" alt="Logo" src="../assets/Wayne.png">
+    <div *ngIf="newsList.length === 0">
+      <img width="200px" alt="Logo" src="../assets/Wayne.png">
+    </div>
   
     <mat-form-field class="searchToolbar">
       <mat-toolbar color="primary">
@@ -22,7 +23,7 @@
   
     <div *ngIf="newsList && newsList.length > 0 && displayURL">
       
-      <app-news-reader [newsURL]="displayURL" [index]="index" [totalNews]="newsList.length" (URLChanged)="changeURL($event)"></app-news-reader>
+      <app-news-reader [newsURL]="displayURL" [title]="newsTitle" [index]="index" [totalNews]="newsList.length" (URLChanged)="changeURL($event)"></app-news-reader>
   
     </div>
   

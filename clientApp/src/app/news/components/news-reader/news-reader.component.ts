@@ -12,6 +12,7 @@ export class NewsReader implements OnInit {
     @Input() newsURL: string;
     @Input() index: string;
     @Input() totalNews: string;
+    @Input() title: string;
 
     @Output() URLChanged: EventEmitter<number> = new EventEmitter<number>()
 

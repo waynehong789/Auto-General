@@ -1,5 +1,9 @@
 <div class="news_reader" fxLayout="column" fxLayoutGap="20px" fxLayoutAlign="space-around center">
 
+    <div class="news_title">
+        News Title: {{title}}
+    </div>
+
     <iframe class="news_frame" [src]="fetchedHtml"></iframe>
 
     <div class="news_bar" fxLayout="row" fxLayoutAlign="space-around center">
