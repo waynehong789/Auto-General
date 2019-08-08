@@ -5,6 +5,7 @@ import { MatToolbarModule, MatButtonModule, MatDividerModule, MatFormFieldModule
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NewsComponent } from './news.component';
 import { NewsRoutingModule } from './news-routing.modile';
+import { NewsReader } from './components/news-reader/news-reader.component';
 
 @NgModule({
     imports: [
@@ -49,7 +50,8 @@ import { NewsRoutingModule } from './news-routing.modile';
         MatTreeModule,
     ],
     declarations: [
-        NewsComponent
+        NewsComponent,
+        NewsReader
     ],
     exports: [
 

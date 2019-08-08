@@ -1,23 +1,12 @@
 .news-search{
-    margin-top: 50px;
+    background-image: url(../../../assets/anonymous-2755365_960_720.jpg);
+    /* Full height */
+    height: 100vh;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
-
-table {
-    width: 80%;
-    table-layout: fixed;
-  }
-  
-  
-th.mat-header-cell {
-    font-weight: bold;
-    text-align: center;
-    font-size: large;
-    color: #FDFDFD;
-  }
-
-tr.mat-header-row {
-    background-color: rgb(13, 52, 228);
-  }
 
 .searchToolbar{
   width:60vw;

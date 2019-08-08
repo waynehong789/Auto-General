@@ -1,8 +1,8 @@
-import { Component, OnInit, Injector, ViewChild } from '@angular/core';
+import { Component, OnInit, Injector} from '@angular/core';
 import { NewsSuper } from './news.super';
 import { NewsService } from './service/news.service';
 import { News } from '../shared/dataModels';
-import { MatTableDataSource, MatPaginator } from '@angular/material';
+import { DomSanitizer } from '@angular/platform-browser';
 
 
 @Component({
@@ -16,15 +16,17 @@ export class NewsComponent extends NewsSuper implements OnInit {
   newsList: Array<News> = [];
   title: string = 'Hacker News Search App';
   searchQuery: string = "";
+  displayURL: any;
+  index: number = 0;
 
-  displayedColumns: string[] = ['ID', 'Title', 'Author', 'OpenNews'];
+  //displayedColumns: string[] = ['ID', 'Title', 'Author', 'OpenNews'];
 
-  public dataSource = new MatTableDataSource<News>(this.newsList);
+  //public dataSource = new MatTableDataSource<News>(this.newsList);
 
-  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
+  //@ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
 
 
-  constructor(newsService: NewsService, injector: Injector) {
+  constructor(newsService: NewsService, injector: Injector, private sanitizer: DomSanitizer) {
     super(newsService, injector)
   }
 
@@ -37,12 +39,15 @@ export class NewsComponent extends NewsSuper implements OnInit {
       //console.log(this.searchQuery);
       try {
         this.loading = true;
+        this.index = 0
         let result: Array<News> = await this.newsService.queryNews(this.searchQuery);
         if (result && result.length > 0) {
           this.loading = false;
           this.newsList = result;
-          this.dataSource = new MatTableDataSource<News>(this.newsList);
-          setTimeout(() => this.dataSource.paginator = this.paginator);
+          //this.dataSource = new MatTableDataSource<News>(this.newsList);
+          //setTimeout(() => this.dataSource.paginator = this.paginator);
+          //this.displayURL = this.sanitizer.bypassSecurityTrustResourceUrl(this.newsList[0].url);
+          this.displayURL = this.newsList[this.index].url;
         }
       } catch (err) {
         console.log(err);
@@ -51,13 +56,18 @@ export class NewsComponent extends NewsSuper implements OnInit {
   }
 
 
-  openNews(row: News) {
+  /* openNews(row: News) {
     try {
      let win = window.open(row.url, '_blank');
      win.focus();
     } catch (err) {
       console.log(err);
     }
+  } */
+
+  changeURL(changedIndex: number){
+    this.index += changedIndex;
+    this.displayURL = this.newsList[this.index].url;
   }
 
 }

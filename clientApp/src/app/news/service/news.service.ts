@@ -14,16 +14,14 @@ export class NewsService {
     newsList: Array<News> = [];
 
 
-    constructor(private http: HttpClient) { 
-
-    }
+    constructor(private http: HttpClient) {}
 
     public queryNews(queryString: string): Promise<any>{
         return new Promise((resolve, reject)=>{
             let params = new HttpParams();
             params = params.append("queryString", queryString);
             this.http.get(this.apiUrl + "news", {params}).subscribe((resp) => {
-                console.log(resp);
+                //console.log(resp);
                 if(resp['data'] && resp['status'] === "success"){
                     resolve(resp['data'])
                 }

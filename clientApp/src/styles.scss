@@ -2,7 +2,10 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 .page-header{
-    color: crimson;
+    color: white;//rgb(13, 52, 228);
+    //background-color: white;
+    font-size: 3em;
+    font-weight: bold;
 }
 
 .app-content{

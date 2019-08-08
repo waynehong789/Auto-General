@@ -1,63 +1,32 @@
-<div class="news-search" fxLayout="column" fxLayoutAlign="space-around center">
-  <h1 class="page-header">
-    {{ title }}
-  </h1>
-  <img width="200" alt="Logo" src="../assets/Wayne.png">
-  <!-- <h4> You can search Hacker News from here.</h4> -->
-
-  <mat-form-field class="searchToolbar">
-    <mat-toolbar color="primary">
-      <input matInput class="searchToolbarInput" type="text" [(ngModel)]="searchQuery">
-      <button mat-button *ngIf="searchQuery" matSuffix mat-icon-button aria-label="Clear" (click)="searchQuery=''">
-        <mat-icon>close</mat-icon>
-      </button>
-      <button mat-button [disabled]="!searchQuery" matSuffix mat-icon-button aria-label="Search" (click)="searchNews()">
-        <mat-icon>search</mat-icon>
-      </button>
-    </mat-toolbar>
-  </mat-form-field>
-
-  <div *ngIf="newsList && newsList.length > 0" fxLayout="column" fxLayoutAlign="space-around center">
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
-      <ng-container matColumnDef="ID">
-        <th mat-header-cell *matHeaderCellDef>ID</th>
-        <td mat-cell *matCellDef="let element">
-          {{element.id}}
-        </td>
-      </ng-container>
-
-
-      <ng-container matColumnDef="Title">
-        <th mat-header-cell *matHeaderCellDef>Title</th>
-        <td mat-cell *matCellDef="let element">
-          {{element.title}}
-        </td>
-      </ng-container>
-
-      <ng-container matColumnDef="Author">
-        <th mat-header-cell *matHeaderCellDef>Author</th>
-        <td mat-cell *matCellDef="let element">
-          {{element.author}}
-        </td>
-      </ng-container>
-
-      <ng-container matColumnDef="OpenNews">
-        <th mat-header-cell *matHeaderCellDef></th>
-        <td mat-cell *matCellDef="let row">
-          <button mat-button matTooltip="Open News" (click)="openNews(row)">
-            <mat-icon>open_in_browser</mat-icon>
-          </button>
-        </td>
-      </ng-container>
-
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
-    <mat-paginator [pageSizeOptions]="[10, 20, 50]" showFirstLastButtons></mat-paginator>
+<div class="news-search">
+  <div fxLayout="column" fxLayoutAlign="space-around center">
+    <h1 class="page-header">
+      {{ title }}
+    </h1>
+    <img width="200px" alt="Logo" src="../assets/Wayne.png">
+    <!-- <h4> You can search Hacker News from here.</h4> -->
+  
+    <mat-form-field class="searchToolbar">
+      <mat-toolbar color="primary">
+        <input matInput class="searchToolbarInput" type="text" [(ngModel)]="searchQuery" (keyup.enter)="searchNews()">
+        <button mat-button *ngIf="searchQuery" matSuffix mat-icon-button aria-label="Clear" (click)="searchQuery=''">
+          <mat-icon>close</mat-icon>
+        </button>
+        <button mat-button [disabled]="!searchQuery" matSuffix mat-icon-button aria-label="Search" (click)="searchNews()">
+          <mat-icon>search</mat-icon>
+        </button>
+      </mat-toolbar>
+    </mat-form-field>
+  
+    <div *ngIf="newsList && newsList.length > 0 && displayURL">
+      
+      <app-news-reader [newsURL]="displayURL" [index]="index" [totalNews]="newsList.length" (URLChanged)="changeURL($event)"></app-news-reader>
+  
+    </div>
+  
   </div>
-</div>
-
-<div *ngIf="loading" class="loading">
-  <mat-spinner></mat-spinner>
+  
+  <div *ngIf="loading" class="loading">
+    <mat-spinner></mat-spinner>
+  </div>
 </div>

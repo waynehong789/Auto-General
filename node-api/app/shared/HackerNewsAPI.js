@@ -15,7 +15,7 @@ var HackerNewsAPI = /** @class */ (function () {
                 method: 'GET'
             };
             request(opts).then(function (result) {
-                console.log("Got response from API: " + result);
+                //console.log("Got response from API: " + result);
                 if (result) {
                     var data = JSON.parse(result);
                     if (data.hits.length > 0) {
@@ -51,7 +51,7 @@ var HackerNewsAPI = /** @class */ (function () {
                 method: 'GET'
             };
             request(opts).then(function (result) {
-                console.log("Got news response from API: " + result);
+                //console.log("Got news response from API: " + result);
                 if (result) {
                     var data = JSON.parse(result);
                     //console.log("Got news response from API: ", data);
